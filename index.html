@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM || PRODUCTIVIY DASHBOARD</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="main">
+        <!-- <nav></nav> -->
+        <section class="allElems">
+            <div class="todo elem" id="0">
+                <img src="./img1.jpg" alt="">
+                <h2>To Do List</h2>
+            </div>
+            <div class="daily elem" id="1">
+                <img src="./img2.jpg" alt="">
+                <h2>Daily Planner</h2>
+            </div>
+            <div class="moti elem" id="2">
+                <img src="./img3.jpg" alt="">
+                <h2>Motivation</h2>
+            </div>
+            <div class="pomo elem" id="3">
+                <img src="./img4.jpg" alt="">
+                <h2>Pomodoro Timer</h2>
+            </div>
+            <div class="goals elem" id="4">
+                <img src="./img5.jpg" alt="">
+                <h2>Daily Goals</h2>
+            </div>
+        </section>
+
+        <section class="fullElem todo-list-fullpage">
+            <button class="back" id="0">
+                <i class="ri-close-line"></i>
+            </button>
+            <h2>Your Personalised Task List</h2>
+            <div class="todo-container">
+                <div class="addTask">
+                    <form>
+                        <input type="text" placeholder="Enter Task">
+                        <textarea name="" cols="30" rows="10" id="" placeholder="Enter Details"></textarea>
+                        <button>Add Task</button>
+                    </form>
+                </div>
+                <div class="allTask"></div>
+            </div>
+        </section>
+        <section class="fullElem daily-planner-fullpage">
+            <button class="back" id="1">
+                <i class="ri-close-line"></i>
+            </button>
+            <h1>Daily Planner</h1>
+        </section>
+        <section class="fullElem motivaiton-fullpage">
+            <button class="back" id="2">
+                <i class="ri-close-line"></i>
+            </button>
+            <h1>Motivation</h1>
+        </section>
+        <section class="fullElem prmodoro-timer-fullpage">
+            <button class="back" id="3">
+                <i class="ri-close-line"></i>
+            </button>
+            <h1>Pomodoro Timer</h1>
+        </section>
+        <section class="fullElem daily-goals-fullpage">
+            <button class="back" id="4">
+                <i class="ri-close-line"></i>
+            </button>
+            <h1>Daily Goals</h1>
+        </section>
+    </div>
+
+    <script src="./scirpt.js"></script>
+</body>
+
+</html>
