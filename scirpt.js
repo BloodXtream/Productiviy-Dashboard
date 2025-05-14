@@ -15,42 +15,57 @@ const openFeatures = () => {
     })
 }
 
-// openFeatures()
+openFeatures()
 
-let form = document.querySelector('.addTask form')
-let taskInput = document.querySelector('.addTask form input')
-let taskDetailsInput = document.querySelector('.addTask form textarea')
-let taskCheckbox = document.querySelector('.addTask form #check')
+const toDoList = () => {
 
-let currentTask = []
+    let form = document.querySelector('.addTask form')
+    let taskInput = document.querySelector('.addTask form input')
+    let taskDetailsInput = document.querySelector('.addTask form textarea')
+    let taskCheckbox = document.querySelector('.addTask form #check')
 
-const renderTask = () => {
+    var currentTask = []
 
-    let allTask = document.querySelector('.allTask')
-    let sum = ''
+    localStorage.getItem('currentTask') ? currentTask = JSON.parse(localStorage.getItem('currentTask')) : console.log('Task list is empty')
 
+    const renderTask = () => {
 
-    currentTask.forEach((elem) => {
-        sum += `<div class="task">
-                <h5>${elem.task}<span class=${elem.imp}>imp</span></h5>
-                <button>Done</button>
-            </div>`
-    })
+        let allTask = document.querySelector('.allTask')
+        let sum = ''
 
-    allTask.innerHTML = sum
-}
-renderTask()
+        currentTask.forEach((elem, idx) => {
+            sum += `<div class="task">
+        <h5>${elem.task}<span class=${elem.imp}>imp</span></h5>
+        <button id=${idx}>Remove</button>
+        </div>`
+        })
 
+        allTask.innerHTML = sum
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    currentTask.push({
-        task: taskInput.value,
-        details: taskDetailsInput.value,
-        imp: taskCheckbox.checked
-    })
-    taskInput.value = ''
-    taskDetailsInput.value = ''
-    taskCheckbox.checked = ''
+        localStorage.setItem('currentTask', JSON.stringify(currentTask))
+    }
     renderTask()
-})
+
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        currentTask.push({
+            task: taskInput.value,
+            details: taskDetailsInput.value,
+            imp: taskCheckbox.checked
+        })
+        renderTask()
+        location.reload()
+    })
+
+    const markCompletedBtn = document.querySelectorAll('.task button')
+    markCompletedBtn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            currentTask.splice(btn.id, 1)
+            renderTask()
+            location.reload()
+        })
+    })
+}
+
+toDoList()
