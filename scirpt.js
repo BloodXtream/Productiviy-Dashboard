@@ -34,10 +34,16 @@ const toDoList = () => {
         let sum = ''
 
         currentTask.forEach((elem, idx) => {
-            sum += `<div class="task">
-        <h5>${elem.task}<span class=${elem.imp}>imp</span></h5>
-        <button id=${idx}>Remove</button>
-        </div>`
+            sum += `
+            <div class="task">
+                <details>
+                    <summary>
+                        <h5>${elem.task}<span class=${elem.imp}>imp</span></h5>
+                    </summary
+                    <p>${elem.details}<p>
+                </details>
+                <button id=${idx}>Remove</button>
+            </div>`
         })
 
         allTask.innerHTML = sum
