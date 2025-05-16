@@ -14,8 +14,8 @@ const openFeatures = () => {
         })
     })
 }
-
 openFeatures()
+
 
 const toDoList = () => {
 
@@ -49,6 +49,12 @@ const toDoList = () => {
         allTask.innerHTML = sum
 
         localStorage.setItem('currentTask', JSON.stringify(currentTask))
+        document.querySelectorAll('.task button').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                currentTask.splice(btn.id, 1)
+                renderTask()
+            })
+        })
     }
     renderTask()
 
@@ -61,16 +67,10 @@ const toDoList = () => {
             imp: taskCheckbox.checked
         })
         renderTask()
-        location.reload()
-    })
+        taskInput.value = ''
+        taskDetailsInput.value = ''
+        taskCheckbox.checked = false
 
-    const markCompletedBtn = document.querySelectorAll('.task button')
-    markCompletedBtn.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            currentTask.splice(btn.id, 1)
-            renderTask()
-            location.reload()
-        })
     })
 }
 

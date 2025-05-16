@@ -144,10 +144,6 @@ section.allElems {
     color: red;
 }
 
-.todo-list-fullpage {
-    display: block;
-}
-
 .todo-list-fullpage h2 {
     font-size: 35px;
 }
@@ -306,7 +302,7 @@ section.allElems {
     transition: max-height .3s ease;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
 .task summary {
