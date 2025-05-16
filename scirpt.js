@@ -14,7 +14,7 @@ const openFeatures = () => {
         })
     })
 }
-openFeatures()
+// openFeatures()
 
 
 const toDoList = () => {
@@ -73,5 +73,4 @@ const toDoList = () => {
 
     })
 }
-
-toDoList()
+// toDoList()

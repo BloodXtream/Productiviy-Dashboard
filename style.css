@@ -4,6 +4,7 @@
     --trio: #fefae0;
     --trit: #dda15e;
     --trif: #bc6c25;
+    --bg: #334420;
 }
 
 @font-face {
@@ -175,7 +176,7 @@ section.allElems {
     padding: 10px 20px;
     width: 100%;
     font-size: 20px;
-    background-color: #334420;
+    background-color: var(--bg);
     color: var(--trio);
     border: none;
     outline: none;
@@ -186,7 +187,7 @@ section.allElems {
     padding: 10px 20px;
     width: 100%;
     font-size: 20px;
-    background-color: #334420;
+    background-color: var(--bg);
     color: var(--trio);
     border: none;
     outline: none;
@@ -248,7 +249,7 @@ section.allElems {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background-color: #334420;
+    background-color: var(--bg);
     padding: 10px 20px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -295,7 +296,7 @@ section.allElems {
 
 .task details {
     width: 100%;
-    background-color: #334420;
+    background-color: var(--bg);
     border-radius: 8px;
     padding: 10px 15px;
     cursor: pointer;
@@ -316,4 +317,16 @@ section.allElems {
 
 .task summary::-webkit-details-marker {
     display: none;
+}
+
+.daily-planner-fullpage {
+    display: block;
+}
+
+.daily-planner-fullpage h2 {
+    font-size: 50px;
+}
+
+.daily-planner-fullpage .day-planner {
+    background-color: var(--bg);
 }
