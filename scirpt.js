@@ -14,7 +14,7 @@ const openFeatures = () => {
         })
     })
 }
-// openFeatures()
+openFeatures()
 
 
 const toDoList = () => {
@@ -73,4 +73,32 @@ const toDoList = () => {
 
     })
 }
-// toDoList()
+toDoList()
+
+const dailyPlanner = () => {
+    let dayPlanner = document.querySelector('.day-planner')
+    let dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
+
+    let hours = Array.from({ length: 18 }, (elem, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+
+    let wholeDaySum = ' '
+    hours.forEach((elem, idx) => {
+        let savedData = dayPlanData[idx] || ''
+        wholeDaySum += `
+    <div class="day-planner-time">
+    <p>${elem}</p>
+    <input id=${idx} type="text" placeholder="..." value=${savedData}>
+    </div>
+    `
+    })
+    dayPlanner.innerHTML = wholeDaySum
+
+    let dayPlannerInput = document.querySelectorAll('.day-planner input')
+    dayPlannerInput.forEach((elem) => {
+        elem.addEventListener('input', () => {
+            dayPlanData[elem.id] = elem.value
+            localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
+        })
+    })
+}
+dailyPlanner()

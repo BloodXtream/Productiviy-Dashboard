@@ -319,6 +319,7 @@ section.allElems {
     display: none;
 }
 
+
 .daily-planner-fullpage {
     display: block;
 }
@@ -328,5 +329,41 @@ section.allElems {
 }
 
 .daily-planner-fullpage .day-planner {
+    background-color: var(--pri);
+    height: 85%;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 40px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    overflow: auto;
+}
+
+.daily-planner-fullpage .day-planner .day-planner-time {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    position: relative;
+    width: 49%;
+}
+
+.day-planner .day-planner-time p {
+    position: absolute;
+    left: 1%;
+    top: 10%;
+}
+
+.day-planner .day-planner-time input {
+    padding: 15px 35px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
     background-color: var(--bg);
+    font-size: 20px;
+    outline: none;
+    padding-top: 30px;
 }
