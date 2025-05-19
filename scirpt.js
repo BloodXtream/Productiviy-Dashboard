@@ -111,7 +111,7 @@ const motivation = () => {
     const motivationRefresh = document.querySelector('.fullElem .refresh')
     const fetchQuote = async () => {
         try {
-            let response = await fetch(`https://api.allorigins.win/raw?url=https://zenquotes.io/api/random&timestamp=${new Date().getTime()}`)
+            let response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent("https://zenquotes.io/api/random")}&timestamp=${new Date().getTime()}`)
             let data = await response.json()
 
             motivationQuote.innerHTML = data[0].q
