@@ -39,7 +39,7 @@ const toDoList = () => {
                 <details>
                     <summary>
                         <h5>${elem.task}<span class=${elem.imp}>imp</span></h5>
-                    </summary
+                    </summary>
                     <p>${elem.details}<p>
                 </details>
                 <button id=${idx}>Remove</button>
@@ -102,3 +102,25 @@ const dailyPlanner = () => {
     })
 }
 dailyPlanner()
+
+const motivation = () => {
+
+    const motivationQuote = document.querySelector('.motivation-2 h1')
+    const motivationAuthor = document.querySelector('.motivation-3 h2')
+    const motivationFullPage = document.querySelector('.motivaiton-fullpage')
+    const motivationRefresh = document.querySelector('.fullElem .refresh')
+    const fetchQuote = async () => {
+        let response = await fetch('http://api.quotable.io/random')
+        let data = await response.json()
+
+        motivationQuote.innerHTML = data.content
+        motivationAuthor.innerHTML = `- ${data.author}`
+
+    }
+    fetchQuote()
+    motivationRefresh.addEventListener('click', () => {
+        motivationFullPage.style.display = 'block'
+        fetchQuote()
+    })
+}
+motivation()

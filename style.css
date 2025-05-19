@@ -145,6 +145,32 @@ section.allElems {
     color: red;
 }
 
+.refresh {
+    position: absolute;
+    right: 5.3%;
+    background-color: var(--trit);
+    color: var(--trio);
+    border-radius: 15px;
+    border: none;
+    padding: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.refresh:hover {
+    transform: scale(1.1);
+}
+
+.refresh:active {
+    transform: scale(.95);
+}
+
+.refresh i:active {
+    color: red;
+}
+
 .todo-list-fullpage h2 {
     font-size: 35px;
 }
@@ -363,4 +389,101 @@ section.allElems {
     font-size: 20px;
     outline: none;
     padding-top: 30px;
+}
+
+.motivaiton-fullpage {
+    position: relative;
+}
+
+.motivaiton-fullpage .motivation-fullpage-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.motivaiton-fullpage .motivation-container {
+    height: 50%;
+    width: 70%;
+    background-color: var(--pri);
+    position: relative;
+    border-radius: 30px;
+}
+
+.motivaiton-fullpage .motivation-container::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #abd817ab;
+    scale: 1.1;
+    border-radius: 30px;
+    filter: blur(60px);
+    z-index: 8;
+}
+
+.motivaiton-fullpage .motivation-container .motivation-wrapper {
+    z-index: 10;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 5px solid var(--bg);
+    border-radius: 25px;
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.motivaiton-fullpage .motivation-container .motivation-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.motivaiton-fullpage .motivation-container .motivation-wrapper img {
+    position: absolute;
+    top: 12%;
+    right: 2%;
+    rotate: 180deg;
+    width: 70px;
+    aspect-ratio: 1/1;
+}
+
+.motivation-container .motivation-wrapper .motivation-1 {
+    background: var(--trif);
+    height: 70px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.motivation-wrapper .motivation-1 h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.motivation-container .motivation-wrapper .motivation-2 {
+    padding: 10px;
+}
+
+.motivation-wrapper .motivation-2 h1 {
+    font-size: 30px;
+    font-weight: 500;
+    font-family: monospace;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+.motivation-wrapper .motivation-3 h2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+    padding-top: 60px;
 }
