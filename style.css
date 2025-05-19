@@ -348,8 +348,10 @@ section.allElems {
 
 .day-planner .day-planner-time p {
     position: absolute;
-    left: 1%;
+    left: 2%;
     top: 10%;
+    color: var(--trit);
+    font-size: small;
 }
 
 .day-planner .day-planner-time input {

@@ -87,7 +87,7 @@ const dailyPlanner = () => {
         wholeDaySum += `
     <div class="day-planner-time">
     <p>${elem}</p>
-    <input id=${idx} type="text" placeholder="..." value=${savedData}>
+    <input id="${idx}" type="text" placeholder="..." value="${savedData}">
     </div>
     `
     })
