@@ -109,13 +109,33 @@ const motivation = () => {
     const motivationAuthor = document.querySelector('.motivation-3 h2')
     const motivationFullPage = document.querySelector('.motivaiton-fullpage')
     const motivationRefresh = document.querySelector('.fullElem .refresh')
+
+    let lastQuote = ''
     const fetchQuote = async () => {
         try {
-            let response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent("https://zenquotes.io/api/random")}&timestamp=${new Date().getTime()}`)
-            let data = await response.json()
+            const response = await fetch(
+                'https://api.allorigins.win/get?url=' +
+                encodeURIComponent('https://zenquotes.io/api/random') +
+                '&cache=' + new Date().getTime()
+            )
+            const data = await response.json()
+            const parsedData = JSON.parse(data.contents)
 
-            motivationQuote.innerHTML = data[0].q
-            motivationAuthor.innerHTML = `- ${data[0].a}`
+            if (!parsedData || !parsedData[0]) {
+                throw new Error('Quote not found in parsed data.')
+            }
+
+            const quote = parsedData[0].q
+            const author = parsedData[0].a
+
+            if (quote === lastQuote) {
+                console.log('Same quote received, trying again...')
+                return fetchQuote()
+            }
+
+            lastQuote = quote
+            motivationQuote.innerHTML = quote
+            motivationAuthor.innerHTML = `- ${author}`
         } catch (error) {
             console.error("Error fetching quote:", error)
             motivationQuote.innerHTML = 'Error While Fetching Quote'
@@ -123,9 +143,9 @@ const motivation = () => {
         }
     }
     fetchQuote()
+
     motivationRefresh.addEventListener('click', () => {
         motivationFullPage.style.display = 'block'
-        console.log('clicked')
         fetchQuote()
     })
 }
