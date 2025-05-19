@@ -110,16 +110,22 @@ const motivation = () => {
     const motivationFullPage = document.querySelector('.motivaiton-fullpage')
     const motivationRefresh = document.querySelector('.fullElem .refresh')
     const fetchQuote = async () => {
-        let response = await fetch('http://api.quotable.io/random')
-        let data = await response.json()
+        try {
+            let response = await fetch(`https://api.allorigins.win/raw?url=https://zenquotes.io/api/random&timestamp=${new Date().getTime()}`)
+            let data = await response.json()
 
-        motivationQuote.innerHTML = data.content
-        motivationAuthor.innerHTML = `- ${data.author}`
-
+            motivationQuote.innerHTML = data[0].q
+            motivationAuthor.innerHTML = `- ${data[0].a}`
+        } catch (error) {
+            console.error("Error fetching quote:", error)
+            motivationQuote.innerHTML = 'Error While Fetching Quote'
+            motivationAuthor.innerHTML = ''
+        }
     }
     fetchQuote()
     motivationRefresh.addEventListener('click', () => {
         motivationFullPage.style.display = 'block'
+        console.log('clicked')
         fetchQuote()
     })
 }
