@@ -14,7 +14,7 @@ const openFeatures = () => {
         })
     })
 }
-// openFeatures()
+openFeatures()
 
 const toDoList = () => {
 
@@ -72,7 +72,7 @@ const toDoList = () => {
 
     })
 }
-// toDoList()
+toDoList()
 
 const dailyPlanner = () => {
     let dayPlanner = document.querySelector('.day-planner')
@@ -100,7 +100,7 @@ const dailyPlanner = () => {
         })
     })
 }
-// dailyPlanner()
+dailyPlanner()
 
 const motivation = () => {
 
@@ -148,7 +148,7 @@ const motivation = () => {
         fetchQuote()
     })
 }
-// motivation()
+motivation()
 
 
 const timer = document.querySelector('.pomo-timer h1')
