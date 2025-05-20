@@ -486,4 +486,57 @@ section.allElems {
     justify-content: flex-end;
     padding-right: 40px;
     padding-top: 60px;
+
+}
+
+.prmodoro-timer-fullpage {
+    display: block;
+    position: relative;
+}
+
+.prmodoro-timer-fullpage h1 {
+    font-size: 40px;
+}
+
+.prmodoro-timer-fullpage .pomo-timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.prmodoro-timer-fullpage .pomo-timer h1 {
+    font-size: 150px;
+}
+
+
+.prmodoro-timer-fullpage .pomo-timer button {
+    background-color: var(--trif);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: monospace;
+    font-weight: 300;
+    margin: 10px;
+    cursor: pointer;
+    transition: all ease .1s;
+    box-shadow: 3px 2px 5px var(--trit);
+}
+
+.pomo-timer button:active {
+    scale: .95;
+    box-shadow: 0px 0px 0px black;
+}
+
+.prmodoro-timer-fullpage .session {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-family: monospace;
+    text-transform: capitalize;
+    font-size: 30px;
 }

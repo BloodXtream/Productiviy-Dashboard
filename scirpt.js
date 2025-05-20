@@ -14,8 +14,7 @@ const openFeatures = () => {
         })
     })
 }
-openFeatures()
-
+// openFeatures()
 
 const toDoList = () => {
 
@@ -73,7 +72,7 @@ const toDoList = () => {
 
     })
 }
-toDoList()
+// toDoList()
 
 const dailyPlanner = () => {
     let dayPlanner = document.querySelector('.day-planner')
@@ -101,7 +100,7 @@ const dailyPlanner = () => {
         })
     })
 }
-dailyPlanner()
+// dailyPlanner()
 
 const motivation = () => {
 
@@ -149,4 +148,65 @@ const motivation = () => {
         fetchQuote()
     })
 }
-motivation()
+// motivation()
+
+
+const timer = document.querySelector('.pomo-timer h1')
+const startbtn = document.querySelector('.pomo-timer .start-timer')
+const pausebtn = document.querySelector('.pomo-timer .pause-timer')
+const resetbtn = document.querySelector('.pomo-timer .reset-timer')
+
+let totalSeconds = 25 * 60
+let timerInterval = null
+let isWorkSession = true
+
+
+const updateTime = () => {
+    let minutes = Math.floor(totalSeconds / 60)
+    let seconds = totalSeconds % 60
+    timer.innerHTML = `${String(minutes).padStart('2', 0)}:${String(seconds).padStart('2', 0)}`
+}
+
+const startTimer = () => {
+    clearInterval(timerInterval)
+    if (isWorkSession) {
+        totalSeconds = 25 * 60
+        timerInterval = setInterval(() => {
+            if (totalSeconds > 0) {
+                totalSeconds--
+                updateTime()
+            } else {
+                isWorkSession = false
+                clearInterval(timerInterval)
+                timer.innerHTML = `05:00`
+            }
+        }, 5)
+    } else {
+        totalSeconds = 5 * 60
+
+        timerInterval = setInterval(() => {
+            if (totalSeconds > 0) {
+                totalSeconds--
+                updateTime()
+            } else {
+                isWorkSession = true
+                clearInterval(timerInterval)
+                timer.innerHTML = `25:00`
+            }
+        }, 5)
+    }
+}
+
+const pauseTimer = () => {
+    clearInterval(timerInterval)
+}
+
+const resetTimer = () => {
+    clearInterval(timerInterval)
+    totalSeconds = 25 * 60
+    updateTime()
+}
+
+startbtn.addEventListener('click', startTimer)
+pausebtn.addEventListener('click', pauseTimer)
+resetbtn.addEventListener('click', resetTimer)
