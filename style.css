@@ -493,6 +493,16 @@ section.allElems {
     position: relative;
 }
 
+.prmodoro-timer-fullpage .session {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-family: monospace;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+
 .prmodoro-timer-fullpage h1 {
     font-size: 40px;
 }
@@ -528,14 +538,4 @@ section.allElems {
 .pomo-timer button:active {
     scale: .95;
     box-shadow: 0px 0px 0px black;
-}
-
-.prmodoro-timer-fullpage .session {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    font-family: monospace;
-    text-transform: capitalize;
-    font-size: 30px;
 }

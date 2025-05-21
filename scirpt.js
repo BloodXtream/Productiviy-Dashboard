@@ -155,6 +155,7 @@ const timer = document.querySelector('.pomo-timer h1')
 const startbtn = document.querySelector('.pomo-timer .start-timer')
 const pausebtn = document.querySelector('.pomo-timer .pause-timer')
 const resetbtn = document.querySelector('.pomo-timer .reset-timer')
+const session = document.querySelector('.prmodoro-timer-fullpage .session')
 
 let totalSeconds = 25 * 60
 let timerInterval = null
@@ -169,8 +170,8 @@ const updateTime = () => {
 
 const startTimer = () => {
     clearInterval(timerInterval)
+    startbtn.innerHTML = `Resume`
     if (isWorkSession) {
-        totalSeconds = 25 * 60
         timerInterval = setInterval(() => {
             if (totalSeconds > 0) {
                 totalSeconds--
@@ -179,10 +180,11 @@ const startTimer = () => {
                 isWorkSession = false
                 clearInterval(timerInterval)
                 timer.innerHTML = `05:00`
+                session.innerHTML = `Break Session`
+                totalSeconds = 5 * 60
             }
-        }, 5)
+        }, 1000)
     } else {
-        totalSeconds = 5 * 60
 
         timerInterval = setInterval(() => {
             if (totalSeconds > 0) {
@@ -192,8 +194,10 @@ const startTimer = () => {
                 isWorkSession = true
                 clearInterval(timerInterval)
                 timer.innerHTML = `25:00`
+                session.innerHTML = `Work Session`
+                totalSeconds = 25 * 60
             }
-        }, 5)
+        }, 1000)
     }
 }
 
@@ -203,6 +207,7 @@ const pauseTimer = () => {
 
 const resetTimer = () => {
     clearInterval(timerInterval)
+    startbtn.innerHTML = `Start`
     totalSeconds = 25 * 60
     updateTime()
 }
