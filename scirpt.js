@@ -150,68 +150,71 @@ const motivation = () => {
 }
 motivation()
 
+const pomodoroTimer = () => {
 
-const timer = document.querySelector('.pomo-timer h1')
-const startbtn = document.querySelector('.pomo-timer .start-timer')
-const pausebtn = document.querySelector('.pomo-timer .pause-timer')
-const resetbtn = document.querySelector('.pomo-timer .reset-timer')
-const session = document.querySelector('.prmodoro-timer-fullpage .session')
+    const timer = document.querySelector('.pomo-timer h1')
+    const startbtn = document.querySelector('.pomo-timer .start-timer')
+    const pausebtn = document.querySelector('.pomo-timer .pause-timer')
+    const resetbtn = document.querySelector('.pomo-timer .reset-timer')
+    const session = document.querySelector('.prmodoro-timer-fullpage .session')
 
-let totalSeconds = 25 * 60
-let timerInterval = null
-let isWorkSession = true
+    let totalSeconds = 25 * 60
+    let timerInterval = null
+    let isWorkSession = true
 
 
-const updateTime = () => {
-    let minutes = Math.floor(totalSeconds / 60)
-    let seconds = totalSeconds % 60
-    timer.innerHTML = `${String(minutes).padStart('2', 0)}:${String(seconds).padStart('2', 0)}`
-}
-
-const startTimer = () => {
-    clearInterval(timerInterval)
-    startbtn.innerHTML = `Resume`
-    if (isWorkSession) {
-        timerInterval = setInterval(() => {
-            if (totalSeconds > 0) {
-                totalSeconds--
-                updateTime()
-            } else {
-                isWorkSession = false
-                clearInterval(timerInterval)
-                timer.innerHTML = `05:00`
-                session.innerHTML = `Break Session`
-                totalSeconds = 5 * 60
-            }
-        }, 1000)
-    } else {
-
-        timerInterval = setInterval(() => {
-            if (totalSeconds > 0) {
-                totalSeconds--
-                updateTime()
-            } else {
-                isWorkSession = true
-                clearInterval(timerInterval)
-                timer.innerHTML = `25:00`
-                session.innerHTML = `Work Session`
-                totalSeconds = 25 * 60
-            }
-        }, 1000)
+    const updateTime = () => {
+        let minutes = Math.floor(totalSeconds / 60)
+        let seconds = totalSeconds % 60
+        timer.innerHTML = `${String(minutes).padStart('2', 0)}:${String(seconds).padStart('2', 0)}`
     }
-}
 
-const pauseTimer = () => {
-    clearInterval(timerInterval)
-}
+    const startTimer = () => {
+        clearInterval(timerInterval)
+        startbtn.innerHTML = `Resume`
+        if (isWorkSession) {
+            timerInterval = setInterval(() => {
+                if (totalSeconds > 0) {
+                    totalSeconds--
+                    updateTime()
+                } else {
+                    isWorkSession = false
+                    clearInterval(timerInterval)
+                    timer.innerHTML = `05:00`
+                    session.innerHTML = `Break Session`
+                    totalSeconds = 5 * 60
+                }
+            }, 1000)
+        } else {
 
-const resetTimer = () => {
-    clearInterval(timerInterval)
-    startbtn.innerHTML = `Start`
-    totalSeconds = 25 * 60
-    updateTime()
-}
+            timerInterval = setInterval(() => {
+                if (totalSeconds > 0) {
+                    totalSeconds--
+                    updateTime()
+                } else {
+                    isWorkSession = true
+                    clearInterval(timerInterval)
+                    timer.innerHTML = `25:00`
+                    session.innerHTML = `Work Session`
+                    totalSeconds = 25 * 60
+                }
+            }, 1000)
+        }
+    }
 
-startbtn.addEventListener('click', startTimer)
-pausebtn.addEventListener('click', pauseTimer)
-resetbtn.addEventListener('click', resetTimer)
+    const pauseTimer = () => {
+        clearInterval(timerInterval)
+    }
+
+    const resetTimer = () => {
+        clearInterval(timerInterval)
+        startbtn.innerHTML = `Start`
+        totalSeconds = 25 * 60
+        updateTime()
+    }
+
+    startbtn.addEventListener('click', startTimer)
+    pausebtn.addEventListener('click', pauseTimer)
+    resetbtn.addEventListener('click', resetTimer)
+}
+pomodoroTimer()
